@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Register = () => {
+export function Register() {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const handleRegister = async () => {
         try {
-            await axios.post("http://localhost:5000/register", {
+            await axios.post("http://localhost:8000/register", {
                 username,
                 password,
             });
@@ -43,5 +43,3 @@ const Register = () => {
     );
 };
 
-
-export default Register;
