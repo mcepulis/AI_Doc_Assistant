@@ -1,19 +1,20 @@
-import {useState, useEffect} from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Register } from "./pages/RegisterPage.jsx";
+import { Login } from "./pages/LoginPage.jsx";
+import { User } from "./pages/UserPage.jsx";
 
+// using routes create app
 function App() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    fetch('http://127.0.0.1:8000/test')
-      .then(response => response.json())
-      .then(data => setMessage(data.message));
-  }, []);
-
   return (
-    <div>
-      <h1>{message}</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/user" element={<User />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;
