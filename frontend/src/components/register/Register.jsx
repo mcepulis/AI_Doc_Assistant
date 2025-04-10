@@ -15,7 +15,8 @@ export function Register() {
 
 
 
-    const handleRegister = async () => {
+    const handleRegister = async (e) => {
+        e.preventDefault();
         console.log("Register button clicked ✅");
         if (password !== repeatPassword) {
             alert("Passwords do not match");
@@ -50,11 +51,12 @@ export function Register() {
         }
 
         try {
-            await axios.post("http://localhost:8000/register", {
+           const response = await axios.post("http://localhost:8000/register", {
                 username,
                 password,
             });
-            navigate("/login");
+            navigate("/");
+            console.log(response.data);
         } catch (error) {
             console.error(error);
         }
@@ -64,28 +66,30 @@ export function Register() {
     return (
         <div>
             <h2>Register Page</h2>
-            <input
-                type="text"
-                placeholder="New Username"
-                value={username}
-                onChange={handleName}
-            />
-            <input
-                type="password"
-                placeholder="New Password"
-                value={password}
-                onChange={handlePassword}
-            />
-            <input
-                type="password"
-                placeholder="Repeat Password"
-                value={repeatPassword}
-                onChange={handleRepeatPassword}
-            />
-            <button onClick={handleRegister}>Register</button>
-            <p>
-                Already have an account? <Link to="/login">Login</Link>
-            </p>
+            <form onSubmit={handleRegister}>
+                <input
+                    type="text"
+                    placeholder="New Username"
+                    value={username}
+                    onChange={handleName}
+                />
+                <input
+                    type="password"
+                    placeholder="New Password"
+                    value={password}
+                    onChange={handlePassword}
+                />
+                <input
+                    type="password"
+                    placeholder="Repeat Password"
+                    value={repeatPassword}
+                    onChange={handleRepeatPassword}
+                />
+                <button onClick={handleRegister}>Register</button>
+                <p>
+                    Already have an account? <Link to="/">Login</Link>
+                </p>
+            </form>
         </div>
     );
 };
