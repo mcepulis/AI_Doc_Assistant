@@ -1,7 +1,8 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import style from "./Register.module.css";
+import mainLogo from "../../assets/images/logo.png";
 
 export function Register() {
     const navigate = useNavigate();
@@ -64,32 +65,38 @@ export function Register() {
 
 
     return (
-        <div>
-            <h2>Register Page</h2>
-            <form onSubmit={handleRegister}>
-                <input
-                    type="text"
-                    placeholder="New Username"
-                    value={username}
-                    onChange={handleName}
-                />
-                <input
-                    type="password"
-                    placeholder="New Password"
-                    value={password}
-                    onChange={handlePassword}
-                />
-                <input
-                    type="password"
-                    placeholder="Repeat Password"
-                    value={repeatPassword}
-                    onChange={handleRepeatPassword}
-                />
-                <button onClick={handleRegister}>Register</button>
-                <p>
-                    Already have an account? <Link to="/">Login</Link>
-                </p>
-            </form>
+        <div className={style.container}>
+            <section className={style.img}>
+                <img src={mainLogo} alt="" />
+            </section>
+            <section className={style.register}>
+                <div className={style.registerForm}>
+                    <form onSubmit={handleRegister}>
+                        <input
+                            type="text"
+                            placeholder="New Username"
+                            value={username}
+                            onChange={handleName}
+                        />
+                        <input
+                            type="password"
+                            placeholder="New Password"
+                            value={password}
+                            onChange={handlePassword}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Repeat Password"
+                            value={repeatPassword}
+                            onChange={handleRepeatPassword}
+                        />
+                        <button onClick={handleRegister}>Register</button>
+                        <p>
+                            Already have an account? <Link to="/">Login</Link>
+                        </p>
+                    </form>
+                </div>
+            </section>
         </div>
     );
 };

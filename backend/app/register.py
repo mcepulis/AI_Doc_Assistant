@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from . import models, schemas
 from .database import get_db
+import bcrypt
 
 router = APIRouter()
 
@@ -11,7 +12,11 @@ def register_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     if existing_user:
         raise HTTPException(status_code=400, detail="Username already exists")
     
-    new_user = models.User(username=user.username, password=user.password)
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), salt)
+
+   
+    new_user = models.User(username=user.username, password_hash=hashed_password.decode('utf-8'))
     db.add(new_user)
     db.commit()
     db.refresh(new_user)

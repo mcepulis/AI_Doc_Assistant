@@ -1,7 +1,8 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import style from "./Login.module.css";
+import mainLogo from "../../assets/images/logo.png";
 
 export function Login() {
     const navigate = useNavigate();
@@ -27,27 +28,35 @@ export function Login() {
     };
 
    return (
-           <div>
-               <h2>Login Page</h2>
-                <form onSubmit={handleLogin}>
-                    <input
-                        type="text"
-                        placeholder="Your Username"
-                        value={username}
-                        onChange={handleName}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Your Password"
-                        value={password}
-                        onChange={handlePassword}
-                    />
-                    <button type="submit">Login</button>
-                    <p>
-                        Don't have an account? <Link to="/register">Register</Link>
-                    </p>
-               </form>
+           <div className={style.container}>
+                <section className={style.img}>
+                    <img src={mainLogo} alt="" />
+                </section>
+                <section className={style.login}>
+                    <div className={style.loginForm}>
+                            <form onSubmit={handleLogin}>
+                                <input 
+                                    type="text"
+                                    placeholder="Your Username"
+                                    value={username}
+                                    onChange={handleName}
+                                />
+                                <input
+                                    type="password"
+                                    placeholder="Your Password"
+                                    value={password}
+                                    onChange={handlePassword}
+                                />
+                                <button type="submit">Login</button>
+                                <p>
+                                    Don't have an account? <Link to="/register">Register</Link>
+                                </p>
+                            </form>
+                    </div>
+               </section>
+               <section className={style.error}>
                {error && <p>{error}</p>}
+               </section>
            </div>
        );
    };
