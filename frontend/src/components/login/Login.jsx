@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import style from "./Login.module.css";
 import mainLogo from "../../assets/images/logo.png";
+import { useAuth } from "../../context/AuthContext"; 
 
 export function Login() {
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ export function Login() {
 
     const handleName = (e) => setUsername(e.target.value);
     const handlePassword = (e) => setPassword(e.target.value);
+    const { login } = useAuth();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -21,6 +23,7 @@ export function Login() {
                 password,
             });
             console.log(response.data);
+            login(response.data.access_token);
             navigate("/user");
         } catch (error) {
             setError(error.response?.data?.detail);
