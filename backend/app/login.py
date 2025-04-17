@@ -17,8 +17,9 @@ def login_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
     data={
-        "sub": existing_user.username,
-        "user_id": str(existing_user.id), 
+        "sub": str(existing_user.id),
+        "username": existing_user.username
+
     },
     expires_delta=access_token_expires
 )
