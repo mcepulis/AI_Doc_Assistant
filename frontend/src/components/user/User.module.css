@@ -1,0 +1,136 @@
+.userPage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #25517c;
+    flex-wrap: wrap;
+  }
+  
+  .header .left button {
+    padding: 8px 16px;
+    background-color: #3b82f6; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .header .left button:hover {
+    background-color: #2563eb; 
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .header .right a {
+    margin-left: 20px;
+    color: #f1f5f9;
+    text-decoration: none;
+    font-size: 0.8rem;
+  }
+  
+  .header .right a:hover {
+    text-decoration: underline;
+  }
+
+  .right button {
+    margin-left: 20px;
+    padding: 8px 16px;
+    background-color: #ef4444; /* red-500 */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .right button:hover {
+    background-color: #dc2626; /* red-600 */
+  }
+
+  .chatArea {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8fafc;
+    overflow-y: auto;
+  }
+  
+  .chatPlaceholder {
+    height: 100%;
+    border: 2px dashed #cbd5e1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #64748b;
+    font-size: 1.2rem;
+    border-radius: 10px;
+  }
+  
+  .footer {
+    padding: 15px;
+    text-align: center;
+    background-color: #1e293b;
+    color: #f1f5f9;
+    font-size: 0.85rem;
+  }
+  
+  .footer a {
+    color: #f1f5f9;
+    text-decoration: none;
+    margin: 0 8px;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
+
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 5px 10px;
+    }
+
+  
+    .right {
+      order: 1; /* appear first */
+      width: 100%;
+      justify-content: center;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  
+    .left {
+      order: 2; /* appear second */
+      width: 100%;
+      display: flex;
+      justify-content: flex-start; /* align to left */
+      padding-left: 15px;
+    }
+  
+    .right a,
+    .right button,
+    .left button {
+      font-size: 16px;
+    }
+  }
+  
