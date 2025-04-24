@@ -3,6 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import style from "./User.module.css";
+import { Chatbot } from '../chatbot/Chatbot';
 
 export function User() {
     const { logout } = useAuth();
@@ -50,8 +51,7 @@ export function User() {
                 </div>
             </header>
             <main className={style.chatArea}>
-                {/* Placeholder for chatbot */}
-                <div className={style.chatPlaceholder}>Chatbot interface coming soon...</div>
+                <Chatbot />  {/* Replace placeholder */}
             </main>
             <footer className={style.footer}>
                 <p>© 2025 DocChat</p>
